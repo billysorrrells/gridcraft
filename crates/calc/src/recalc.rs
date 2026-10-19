@@ -909,7 +909,7 @@ impl Calc {
         let t1 = prof_now();
         let n = dirty.len();
         self.run(wb, dirty, false);
-        if std::env::var_os("GRIDCRAFT_PROFILE").is_some() {
+        if std::env::var_os("BILLO GRID_PROFILE").is_some() {
             eprintln!("recalc: {} seeds, closure {} cells {:.1} ms, run {:.1} ms", seeds.len(), n, t1 - t0, prof_now() - t1);
         }
     }
@@ -973,14 +973,14 @@ impl Calc {
                 }
                 if host.iterate && !host.members.is_empty() {
                     let passes = host.iterate_loops(&dirty, wb.calc.max_iterations, wb.calc.max_change);
-                    if std::env::var_os("GRIDCRAFT_PROFILE").is_some() {
+                    if std::env::var_os("BILLO GRID_PROFILE").is_some() {
                         eprintln!("  iterative calculation: {} passes over {} formulas", passes, host.tainted.len());
                     }
                 }
                 (host.results, host.spills, host.cycles)
             };
             self.rng = rng;
-            if std::env::var_os("GRIDCRAFT_PROFILE").is_some() {
+            if std::env::var_os("BILLO GRID_PROFILE").is_some() {
                 eprintln!("  eval {} formulas {:.1} ms", results.len(), prof_now() - tp);
             }
             let tw = prof_now();
@@ -1065,7 +1065,7 @@ impl Calc {
             if full {
                 // Everything was already evaluated once; spill dependents need another pass.
             }
-            if std::env::var_os("GRIDCRAFT_PROFILE").is_some() {
+            if std::env::var_os("BILLO GRID_PROFILE").is_some() {
                 eprintln!("  write-back {:.1} ms", prof_now() - tw);
             }
             spill_changes.sort_by_key(|(s, c)| (*s, c.row, c.col));
